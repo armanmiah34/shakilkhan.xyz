@@ -1,9 +1,9 @@
 #!/bin/bash
 #Script Variables
 HOST='64.20.41.122';
-USER='armandev_111aylodchackerwin';
-PASS='111aylodchackerwin123';
-DBNAME='armandev_111aylodchackerwin';
+USER='armandev_mango-vipxyz';
+PASS='mango-vipxyz123';
+DBNAME='armandev_mango-vipxyz';
 PORT_TCP='1194';
 PORT_UDP='53';
 timedatectl set-timezone Asia/Riyadh
@@ -87,7 +87,7 @@ error_directory /usr/share/squid/errors/English' >> squid.conf
     chmod 755 *
     /etc/init.d/squid start
 cd /etc || exit
-wget 'https://pastebin.com/raw/xtPc5t1k' -O /etc/socks.py
+wget 'https://pastebin.com/raw/z9j2nA8p' -O /etc/socks.py
 dos2unix /etc/socks.py
 chmod +x /etc/socks.py
 rm /etc/apt/sources.list
@@ -237,7 +237,6 @@ cat <<'LENZ05' >/etc/openvpn/login/connect.sh
 server_ip=SERVER_IP
 datenow=`date +"%Y-%m-%d %T"`
 mysql -u $USER -p$PASS -D $DB -h $HOST -e "UPDATE users SET is_connected='1', device_connected='1', active_address='$server_ip', active_date='$datenow' WHERE user_name='$common_name' "
-mysql -u $USER -p$PASS -D $DB -h $HOST -e "UPDATE server_list SET online=online+1 WHERE server_ip='$server_ip' "
 LENZ05
 
 sed -i "s|SERVER_IP|$server_ip|g" /etc/openvpn/login/connect.sh
@@ -246,12 +245,8 @@ sed -i "s|SERVER_IP|$server_ip|g" /etc/openvpn/login/connect.sh
 cat <<'LENZ06' >/etc/openvpn/login/disconnect.sh
 #!/bin/bash
 . /etc/openvpn/login/config.sh
-server_ip=SERVER_IP
 mysql -u $USER -p$PASS -D $DB -h $HOST -e "UPDATE users SET is_connected='0', active_address='', active_date='' WHERE user_name='$common_name' "
-mysql -u $USER -p$PASS -D $DB -h $HOST -e "UPDATE server_list SET online=online-1 WHERE server_ip='$server_ip' "
 LENZ06
-
-sed -i "s|SERVER_IP|$server_ip|g" /etc/openvpn/login/disconnect.sh
 
 cat << EOF > /etc/openvpn/easy-rsa/keys/ca.crt
 -----BEGIN CERTIFICATE-----
